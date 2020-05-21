@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="LogToConsole" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%-5level] [%c{.1}] -  %m%n%rEx{full,
+            filters(
+            org.springframework.beans.factory,
+            org.springframework.cglib,
+            org.springframework.context,
+            io.cucumber.junit,
+            io.cucumber.spring,
+            io.cucumber.core,
+            com.intellij.rt,
+            $$EnhancerBySpring)
+            }"/>
+        </Console>
+
+        <RollingFile name="LogToRollingFile"
+                     fileName="debuglogs/app_latest.log"
+                     filePattern="debuglogs/archive/app_%d{dd-MMM-yyyy}-%i.log.gz">
+            <PatternLayout header="Test Framework Logging are marked with [RAF] tags%n"
+                           pattern="%d{HH:mm:ss.SSS} [%t] [%-5level] %c - %msg%n"/>
+            <Policies>
+                <OnStartupTriggeringPolicy/>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="20"/>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="com.raf" level="info" additivity="false">
+            <AppenderRef ref="LogToConsole"/>
+            <AppenderRef ref="LogToRollingFile"/>
+        </Logger>
+        <Logger name="org.testcontainers" level="info" additivity="false">
+            <AppenderRef ref="LogToConsole"/>
+            <AppenderRef ref="LogToRollingFile"/>
+        </Logger>
+        <Logger name="com.github.dockerjava" level="info" additivity="false">
+            <AppenderRef ref="LogToConsole"/>
+            <AppenderRef ref="LogToRollingFile"/>
+        </Logger>
+        <Root level="error">
+            <AppenderRef ref="LogToConsole"/>
+            <AppenderRef ref="LogToRollingFile"/>
+        </Root>
+    </Loggers>
+</Configuration>

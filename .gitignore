@@ -1,0 +1,14 @@
+# Maven target directory
+target/
+logs/
+debuglogs/
+SessionFile.ini
+node_modules/
+
+# IntellijIDEA metadata
+*.idea
+*.iml
+
+# Compiled source
+*.class
+*.log

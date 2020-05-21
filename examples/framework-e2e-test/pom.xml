@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>framework-e2e-test</artifactId>
+
+    <parent>
+        <artifactId>examples</artifactId>
+        <groupId>com.hendry</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+                <configuration>
+                    <!--                    <testFailureIgnore>true</testFailureIgnore>-->
+                    <systemPropertyVariables>
+                        <env>${env}</env>
+                    </systemPropertyVariables>
+                    <properties>
+                        <property>
+                            <name>dataproviderthreadcount</name>
+                            <value>${parallel}</value>
+                        </property>
+                    </properties>
+                </configuration>
+            </plugin>
+
+            <!--            <plugin>-->
+            <!--                <groupId>net.masterthought</groupId>-->
+            <!--                <artifactId>maven-cucumber-reporting</artifactId>-->
+            <!--                <version>5.0.0</version>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <id>execution</id>-->
+            <!--                        <phase>test</phase>-->
+            <!--                        <goals>-->
+            <!--                            <goal>generate</goal>-->
+            <!--                        </goals>-->
+            <!--                        <configuration>-->
+            <!--                            <projectName>UI Test Example</projectName>-->
+            <!--                            <outputDirectory>${project.build.directory}/results/</outputDirectory>-->
+            <!--                            <inputDirectory>${project.build.directory}/results/json</inputDirectory>-->
+            <!--                            <jsonFiles>-->
+            <!--                                <param>**/*.json</param>-->
+            <!--                            </jsonFiles>-->
+            <!--                            &lt;!&ndash;                            <cucumberOutput>${project.build.directory}/results/</cucumberOutput>&ndash;&gt;-->
+            <!--                            &lt;!&ndash;                            <parallelTesting>false</parallelTesting>&ndash;&gt;-->
+            <!--                        </configuration>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--            </plugin>-->
+        </plugins>
+    </build>
+
+    <profiles>
+        <!-- DEFAULT LOCAL PROFILE -->
+        <profile>
+            <id>local</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <env>local</env>
+                <parallel>1</parallel>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>qa</id>
+            <properties>
+                <env>qa</env>
+                <parallel>4</parallel>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>container</id>
+            <properties>
+                <env>container</env>
+                <parallel>5</parallel>
+            </properties>
+        </profile>
+    </profiles>
+
+</project>

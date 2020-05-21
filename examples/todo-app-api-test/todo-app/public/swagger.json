@@ -1,0 +1,344 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v1",
+    "title": "todo-api"
+  },
+  "host": "localhost:3000",
+  "paths": {
+    "/todos": {
+      "get": {
+        "tags": [
+          "Todos"
+        ],
+        "summary": "Get list of todos",
+        "description": "Get list of todos in the system",
+        "operationId": "Get",
+        "consumes": [],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "$ref": "#/definitions/TodoResponseItem"
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "accesstoken": [
+              null
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Todos"
+        ],
+        "summary": "Creates a new todo",
+        "description": "Create a new todo",
+        "operationId": "Post",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "req",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/CreateTodoRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/CreateTodoResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "accesstoken": [
+              null,
+              null
+            ]
+          }
+        ]
+      }
+    },
+    "/todos/{id}": {
+      "get": {
+        "tags": [
+          "Todos"
+        ],
+        "summary": "Get specific todo by ID",
+        "description": "Get specific todo by ID",
+        "operationId": "Get",
+        "consumes": [],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetTodoByIdResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "accesstoken": [
+              null
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Todos"
+        ],
+        "summary": "Update todo",
+        "description": "Update todo",
+        "operationId": "Put",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "req",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/UpdateTodoRequest"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UpdateTodoResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "accesstoken": [
+              null
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Todos"
+        ],
+        "summary": "Delete specific todo by ID",
+        "description": "Delete specific todo by ID",
+        "operationId": "Delete",
+        "consumes": [],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "500": {
+            "description": "Server Error"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "accesstoken": [
+              null
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "CreateTodoRequest": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "completed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "CreateTodoResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "completed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "TodoResponseItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "completed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "GetTodoByIdResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "completed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "UpdateTodoRequest": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "completed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "UpdateTodoResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "completed": {
+          "type": "boolean"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "accesstoken": {
+      "name": "Authorization",
+      "in": "header",
+      "type": "apiKey"
+    }
+  },
+  "tags": []
+}
