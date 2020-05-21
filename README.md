@@ -7,6 +7,7 @@ Automation framework to build end-to-end test
 - Automatic docker containerization of test environment
 - Automatic browser driver detection and management
 - Automatic video recording (configurable)
+- Supports cross-browser execution and selenium-grid architecture
 - Supports parallel, serial and hybrid test execution
 - Supports partial execution using tagging (eq. @test, @qa_only, @ci_only)
 - Powerful UI action library that performs automatic `explicit wait` and `retry` 
