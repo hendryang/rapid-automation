@@ -35,7 +35,7 @@ Open your Project's parent POM and add in following dependency:
 
 ### Examples
 #### Running Test 
-- `$ git clone `
+- `$ git clone https://github.com/hendryang/rapid-automation.git`
 - `$ cd ./rapid-automation/examples/framework-e2e-test`
 - To Run all test without container
     - `$ mvn clean test`
