@@ -32,30 +32,28 @@
                 </configuration>
             </plugin>
 
-            <!--            <plugin>-->
-            <!--                <groupId>net.masterthought</groupId>-->
-            <!--                <artifactId>maven-cucumber-reporting</artifactId>-->
-            <!--                <version>5.0.0</version>-->
-            <!--                <executions>-->
-            <!--                    <execution>-->
-            <!--                        <id>execution</id>-->
-            <!--                        <phase>test</phase>-->
-            <!--                        <goals>-->
-            <!--                            <goal>generate</goal>-->
-            <!--                        </goals>-->
-            <!--                        <configuration>-->
-            <!--                            <projectName>UI Test Example</projectName>-->
-            <!--                            <outputDirectory>${project.build.directory}/results/</outputDirectory>-->
-            <!--                            <inputDirectory>${project.build.directory}/results/json</inputDirectory>-->
-            <!--                            <jsonFiles>-->
-            <!--                                <param>**/*.json</param>-->
-            <!--                            </jsonFiles>-->
-            <!--                            &lt;!&ndash;                            <cucumberOutput>${project.build.directory}/results/</cucumberOutput>&ndash;&gt;-->
-            <!--                            &lt;!&ndash;                            <parallelTesting>false</parallelTesting>&ndash;&gt;-->
-            <!--                        </configuration>-->
-            <!--                    </execution>-->
-            <!--                </executions>-->
-            <!--            </plugin>-->
+            <plugin>
+                <groupId>net.masterthought</groupId>
+                <artifactId>maven-cucumber-reporting</artifactId>
+                <version>5.0.0</version>
+                <executions>
+                    <execution>
+                        <id>execution</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <projectName>UI Test Example</projectName>
+                            <outputDirectory>${project.build.directory}/results/cucumber</outputDirectory>
+                            <inputDirectory>${project.build.directory}/results/json</inputDirectory>
+                            <jsonFiles>
+                                <param>**/*.json</param>
+                            </jsonFiles>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 

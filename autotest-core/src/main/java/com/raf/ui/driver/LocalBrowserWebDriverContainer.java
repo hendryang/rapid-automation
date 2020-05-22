@@ -129,7 +129,7 @@ public class LocalBrowserWebDriverContainer<SELF extends LocalBrowserWebDriverCo
         if (capabilities == null) {
             if (seleniumVersion.startsWith("2.")) {
                 logger().info("No capabilities provided, falling back to DesiredCapabilities.chrome()");
-                capabilities = DesiredCapabilities.chrome();
+                capabilities = DesiredCapabilities.htmlUnit();
             } else {
                 logger().info("No capabilities provided, falling back to ChromeOptions");
                 capabilities = new ChromeOptions();

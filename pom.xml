@@ -22,14 +22,14 @@
     <!-- General properties configuration -->
     <properties>
         <maven.compiler.version>3.8.0</maven.compiler.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <java.version>11</java.version>
+        <maven.compiler.target>11</maven.compiler.target>
         <log4j2.version>2.13.1</log4j2.version>
-        <seleniumjava.version>3.141.59</seleniumjava.version>
+        <seleniumjava.version>4.0.0-alpha-5</seleniumjava.version>
         <cucumber.version>5.5.0</cucumber.version>
         <spring.version>5.1.9.RELEASE</spring.version>
         <junit.version>4.12</junit.version>
-        <webdrivermanager.version>3.6.1</webdrivermanager.version>
+        <webdrivermanager.version>4.0.0</webdrivermanager.version>
         <jgit.version>5.3.1.201904271842-r</jgit.version>
         <rest-assured.version>4.2.0</rest-assured.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -248,9 +248,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven.compiler.version}</version>
                 <configuration>
-                    <encoding>UTF-8</encoding>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
+<!--                    <encoding>UTF-8</encoding>-->
+                    <release>${java.version}</release>
                 </configuration>
             </plugin>
 
@@ -266,6 +265,15 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.7</version>
+                <configuration>
+                    <generateBackupPoms>false</generateBackupPoms>
+                </configuration>
             </plugin>
         </plugins>
     </build>

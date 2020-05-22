@@ -40,7 +40,7 @@ public class ChromeImpl extends AbstractBrowser {
         if (chromeVersion.equalsIgnoreCase(DEFAULT)) {
             WebDriverManager.chromedriver().setup();
         } else {
-            WebDriverManager.chromedriver().version(chromeVersion).setup();
+            WebDriverManager.chromedriver().browserVersion(chromeVersion).setup();
             log.atDebug().log("[RAF] User requested to use chrome version " + chromeVersion);
         }
         log.atTrace().log("[RAF] Speed -> WebDriverManager setup took : {} ms", () -> (System.nanoTime() - debugStartTime) / 1_000_000);
