@@ -55,9 +55,9 @@ Open your Project's parent POM and add in following dependency:
 
 ### Built With
 - Java 11.x
-- Selenium WebDriver 3.x [UI]
+- Selenium WebDriver 4.x [UI]
 - Rest-assured [API]
-- Cucumber [BDD]
+- Cucumber 5.x [BDD]
 - Docker [Test Container]
-- Bonigarcia [WebDriver management]
+- Bonigarcia 4.x [WebDriver management]
 
