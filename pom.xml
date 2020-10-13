@@ -28,7 +28,7 @@
         <seleniumjava.version>4.0.0-alpha-5</seleniumjava.version>
         <cucumber.version>5.5.0</cucumber.version>
         <spring.version>5.1.9.RELEASE</spring.version>
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <webdrivermanager.version>4.0.0</webdrivermanager.version>
         <jgit.version>5.3.1.201904271842-r</jgit.version>
         <rest-assured.version>4.2.0</rest-assured.version>
